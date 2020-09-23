@@ -63,7 +63,7 @@ const Auth = (props) => {
         <div id="formContent">
           <h2
             onClick={toggleLogin}
-            className={login ? "active" : "inactive" + " cursor-pointer"}
+            className={(login ? "active" : "inactive") + " cursor-pointer"}
           >
             {" "}
             Sign In{" "}
@@ -71,7 +71,8 @@ const Auth = (props) => {
           <h2
             onClick={toggleLogin}
             className={
-              !login ? "active" : "inactive" + " underlineHover cursor-pointer"
+              (!login ? "active" : "inactive") +
+              " underlineHover cursor-pointer"
             }
           >
             Sign Up{" "}

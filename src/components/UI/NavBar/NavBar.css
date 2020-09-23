@@ -1,0 +1,28 @@
+@media (min-width: 668px) {
+  .mynavbar {
+    position: absolute;
+    right: 20;
+  }
+}
+
+@media (max-width: 667px) {
+  .mynavbar {
+    position: relative !important;
+    right: 0 !important;
+  }
+  .mynavbar li {
+    float: left;
+  }
+}
+
+.mynavitem {
+  margin: 10px;
+}
+
+.my-navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+}
