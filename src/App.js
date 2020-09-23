@@ -7,17 +7,31 @@ import Logout from "./components/Auth/logout";
 import UserPages from "./components/UserPages/UserPages";
 
 function App() {
+  let routes;
+  var type = "user";
+  var auth = true;
+  if (type === "admin") {
+    routes = (
+      <Switch>
+        <Route path="/admin" component={AdminPages} />
+        <Route path="/auth" exact component={Auth} />
+        <Route path="/logout" exact component={Logout} />
+        <Redirect to={auth ? "/admin" : "/auth"} />
+      </Switch>
+    );
+  } else if (type === "user") {
+    routes = (
+      <Switch>
+        <Route path="/user" component={UserPages} />
+        <Route path="/auth" exact component={Auth} />
+        <Route path="/logout" exact component={Logout} />
+        <Redirect to={auth ? "/user" : "/auth"} />
+      </Switch>
+    );
+  }
   return (
     <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route path="/admin" component={AdminPages} />
-          <Route path="/user" component={UserPages} />
-          <Route path="/auth" exact component={Auth} />
-          <Route path="/logout" exact component={Logout} />
-          <Redirect to="/admin" />
-        </Switch>
-      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>{routes}</Suspense>
     </div>
   );
 }

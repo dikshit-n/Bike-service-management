@@ -7,7 +7,6 @@ import Services from "./Services/Services";
 
 const AdminPages = (props) => {
   const [adminRoutes] = useState([
-    // { name: "Home", to: "/admin" },
     { name: "Services", to: props.match.path + "/services" },
     { name: "Orders", to: props.match.path + "/orders" },
     { name: "Logout", to: "/logout" },
