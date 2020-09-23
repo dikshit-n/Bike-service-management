@@ -17,6 +17,7 @@ const SelectInput = (props) => {
           // const color = chroma(data.color);
           return {
             ...styles,
+            textAlign: "left",
             border: props.optionsBorder ? props.optionsBorder : "none",
             backgroundColor: isFocused
               ? props.optionsActiveBackgroundColor

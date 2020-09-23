@@ -10,7 +10,9 @@ const Services = (props) => {
       <br />
       <br />
       <br />
-      Services
+      {/* <CardFooter>
+          <div className="add-service">Add Another Order</div>
+        </CardFooter> */}
     </div>
   );
 };

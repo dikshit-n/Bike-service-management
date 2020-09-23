@@ -8,7 +8,7 @@ import UserPages from "./components/UserPages/UserPages";
 
 function App() {
   let routes;
-  var type = "user";
+  var type = "admin";
   var auth = true;
   if (type === "admin") {
     routes = (
