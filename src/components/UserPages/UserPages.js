@@ -22,7 +22,7 @@ const UserPages = (props) => {
         //   <br />
         //   Welcome User
         // </Fragment>
-        <Redirect to={props.match.path + "/previous"} />
+        <Redirect to={props.match.path + "/book"} />
       ) : null}
       <Switch>
         <Route path={props.match.path + "/book"} component={BookNew} />
