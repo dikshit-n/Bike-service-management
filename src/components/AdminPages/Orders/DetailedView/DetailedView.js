@@ -20,6 +20,7 @@ const DetailedView = (props) => {
     orderName: "",
     orderedDate: "",
     status: "",
+    price: "",
   });
   const [submitLoading, setSubmitLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -31,10 +32,11 @@ const DetailedView = (props) => {
     setSubmitLoading(true);
     let submitData = props.entireData.map((el) => {
       if (el.id === props.data.id) {
-        el = formData;
+        el = { ...el, ...formData };
       }
       return el;
     });
+    console.log(submitData);
     axios
       .post(baseUrl + "/updateorder", { data: submitData })
       .then((res) => {
@@ -83,7 +85,7 @@ const DetailedView = (props) => {
   return (
     <Card className="orders">
       <CardHeader>
-        <CardTitle>{props.data.name}</CardTitle>
+        <CardTitle>{props.data.orderName}</CardTitle>
         <Button
           onClick={props.data.goback}
           color="danger"
@@ -117,6 +119,9 @@ const DetailedView = (props) => {
             value={formData.orderedDate}
             type="text"
           />
+          <br />
+          <label>Price</label>
+          <Input name="price" disabled value={formData.price} type="text" />
           <br />
           <label>Status</label>
           <SelectInput
