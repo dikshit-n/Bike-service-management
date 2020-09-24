@@ -1,20 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BookNew.css";
 import axios from "axios";
 import { baseUrl } from "../../../baseUrl";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Input,
-  Spinner,
-} from "reactstrap";
+import { Card, CardBody, CardHeader, CardTitle, Spinner } from "reactstrap";
 import List from "../../UI/List/List";
 import Alert from "../../UI/Alert/Alert";
-import SmallSpinner from "../../UI/SmallSpinner/SmallSpinner";
 import DetailedBooking from "./DetailedBooking/DetailedBooking";
 
 const BookNew = (props) => {
@@ -23,11 +13,6 @@ const BookNew = (props) => {
   const [status, setStatus] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [addLoading, setAddLoading] = useState(false);
-  const [addDetails, setAddDetails] = useState({
-    serviceName: "",
-    price: "",
-  });
   const [add, setAdd] = useState(false);
   const [show, setShow] = useState({
     display: false,
@@ -171,34 +156,6 @@ const BookNew = (props) => {
       });
   };
 
-  const submit = (event) => {
-    event.preventDefault();
-    setAddLoading(true);
-    let submitData = data.push({ ...addDetails, id: data.length });
-    axios
-      .post(baseUrl + "/updateservices", { data: submitData })
-      .then((res) => {
-        console.log(res.data);
-        setAddLoading(false);
-        setMessage("Successfully Added");
-        setStatus("Success");
-      })
-      .catch((err) => {
-        console.log(err);
-        setAddLoading(false);
-        setMessage("Error Adding");
-        setStatus("Error");
-      });
-  };
-
-  const changeHandler = (event) => {
-    const { name, value } = event.target;
-    setAddDetails((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const hideAlert = () => {
     setStatus(null);
     if (add) {
@@ -222,70 +179,9 @@ const BookNew = (props) => {
             ) : data.length === 0 ? (
               <h4>No Services !</h4>
             ) : (
-              <Fragment>
-                <List data={data} />
-                {add ? (
-                  <form onSubmit={submit} style={{ textAlign: "left" }}>
-                    <label>Service Name</label>
-                    <Input
-                      name="serviceName"
-                      type="text"
-                      value={addDetails.serviceName}
-                      placeholder="Enter Service Name"
-                      onChange={changeHandler}
-                      required
-                    />
-                    <br />
-                    <label>Price in ($)</label>
-                    <Input
-                      name="price"
-                      type="tel"
-                      value={addDetails.price}
-                      placeholder="Enter Price"
-                      onChange={changeHandler}
-                      required
-                    />
-                    <button
-                      style={{ width: 1, height: 1, opacity: 0 }}
-                      type="submit"
-                      disdisabled={
-                        addDetails.serviceName.trim() === "" ||
-                        addDetails.price.trim() === ""
-                      }
-                      bled
-                    />
-                  </form>
-                ) : null}
-              </Fragment>
+              <List data={data} />
             )}
           </CardBody>
-          <CardFooter>
-            {add ? (
-              <div>
-                <Fragment>
-                  <Button
-                    color="success"
-                    type="submit"
-                    onClick={(event) => submit(event)}
-                    disabled={
-                      addDetails.serviceName.trim() === "" ||
-                      addDetails.price.trim() === ""
-                    }
-                  >
-                    {addLoading ? <SmallSpinner /> : null} Add
-                  </Button>{" "}
-                  &nbsp;&nbsp;&nbsp;
-                  <Button onClick={() => setAdd(false)} color="danger">
-                    Cancel
-                  </Button>
-                </Fragment>
-              </div>
-            ) : !loading ? (
-              <div className="add-service" onClick={() => setAdd(true)}>
-                Add Order
-              </div>
-            ) : null}
-          </CardFooter>
         </Card>
       )}
       <Alert
