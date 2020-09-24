@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Orders.css";
 import axios from "axios";
 import { baseUrl } from "../../../baseUrl.js";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Col,
-  Row,
-  Spinner,
-} from "reactstrap";
+import { Card, CardBody, CardHeader, CardTitle, Spinner } from "reactstrap";
 import List from "../../UI/List/List";
 import DetailedView from "./DetailedView/DetailedView";
 import Alert from "../../UI/Alert/Alert";
@@ -121,7 +112,6 @@ const Orders = (props) => {
             color: "danger",
             onClick: () =>
               setShow((prev) => ({
-                display: false,
                 id: "aokfks",
                 userName: "Mani",
                 orderName: "Scooty Service",
@@ -150,7 +140,6 @@ const Orders = (props) => {
             onClick: () =>
               setShow((prev) => ({
                 id: "wdweedwe",
-                display: false,
                 userName: "Jaga",
                 price: "500",
                 orderName: "Car Service",
@@ -177,7 +166,6 @@ const Orders = (props) => {
             color: "warning",
             onClick: () =>
               setShow((prev) => ({
-                display: false,
                 userName: "Dikshit",
                 orderName: "Bike Service",
                 orderedDate: "11-8-2020",

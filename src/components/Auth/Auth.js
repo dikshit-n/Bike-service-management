@@ -49,12 +49,12 @@ const Auth = (props) => {
   const submitSignIn = (event) => {
     event.preventDefault();
     console.log(signInData);
-    props.history.push("/admin");
+    props.history.push("/user");
   };
   const submitSignUp = (event) => {
     event.preventDefault();
     console.log(signUpData);
-    props.history.push("/admin");
+    props.history.push("/user");
   };
 
   return (
@@ -129,7 +129,7 @@ const Auth = (props) => {
                 placeholder="password"
               />
               <div className="user-type">
-                <label>Type</label>
+                <label>Sign up as..</label>
                 <SelectInput
                   value={signUpData.type}
                   name="type"
@@ -139,7 +139,7 @@ const Auth = (props) => {
                       type: value,
                     }))
                   }
-                  placeholder="Type"
+                  placeholder="Who Are You ?"
                   options={["Owner", "Customer"]}
                 />
               </div>

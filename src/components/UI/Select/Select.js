@@ -22,7 +22,7 @@ const SelectInput = (props) => {
             backgroundColor: isFocused
               ? props.optionsActiveBackgroundColor
                 ? props.optionsActiveBackgroundColor
-                : "blue"
+                : "#56BAED"
               : isDisabled
               ? props.disabledOptionsBackgroundColor
                 ? props.disabledOptionsBackgroundColor

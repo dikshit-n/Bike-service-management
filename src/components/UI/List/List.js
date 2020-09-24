@@ -17,7 +17,7 @@ const List = (props) => {
         id: index,
       })),
     ]);
-  }, []);
+  }, [props.data]);
 
   const activate = (id) => {
     setDetails((prev) => {

@@ -43,7 +43,7 @@ const Services = (props) => {
   const getData = () => {
     setLoading(true);
     axios
-      .post(baseUrl + "/orders")
+      .post(baseUrl + "/services")
       .then((res) => {
         console.log(res.data);
         setLoading(false);
